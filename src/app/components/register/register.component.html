@@ -1,0 +1,60 @@
+<div class="container-fluid" style="background-color: #0DB614;">
+    <div class="container">
+        <div class="row justify-content-center align-items-center vh-100">
+            <div class="col-12 col-md-6">
+                <figure>
+                    <img src="../assets/goodfoodlogo.png" class="img-fluid" alt="Logo GoodFood" height="100%">
+                </figure>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <form class="bg-light rounded-4 p-4 mb-3">
+                    <div class="mb-3">
+                        <label for="inputName" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp"
+                            placeholder="Seu nome" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                            placeholder="Seu email" required>
+                        <div class="text-danger" id="emailError"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">Senha:</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Sua senha" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputConfirmPassword" class="form-label">Confirmar Senha:</label>
+                        <input type="password" class="form-control" id="inputConfirmPassword"
+                            placeholder="Digite sua senha" required>
+                        <div class="text-danger" id="passwordError"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="form-label">Selecione sua categoria:</span>
+
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="radio" name="flexRadioUser" id="flexRadioClient"
+                                value="Cliente" checked>
+                            <label for="flexRadioClient" class="form-check-label">Cliente</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioUser" id="flexRadioNutritionist"
+                                value="Nutricionista">
+                            <label class="form-check-label" for="flexRadioNutritionist">Nutricionista</label>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-success col-4">Cadastrar</button>
+                        <div class="mt-4">
+                            <span>Você já tem uma conta? <a routerLink="/login">Entrar.</a></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
