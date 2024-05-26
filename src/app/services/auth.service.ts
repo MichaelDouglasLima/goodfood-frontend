@@ -11,7 +11,8 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/api/auth';
   private tokenKey = 'authToken';
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
+  }
 
   login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, { username, password }).pipe(
@@ -42,7 +43,7 @@ export class AuthService {
       return null;
     }
     const decodedToken = this.jwtHelper.decodeToken(token);
-    return decodedToken ? decodedToken.role : null;
+    return decodedToken ? decodedToken.user.role : null;
   }
-}
 
+}
