@@ -18,6 +18,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HomeClientComponent } from './components/home-client/home-client.component';
 import { HomeNutritionistComponent } from './components/home-nutritionist/home-nutritionist.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ExperienceFormComponent } from './components/experience-form/experience-form.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { ProfileClientComponent } from './components/profile-client/profile-client.component';
+import { HistoryFormComponent } from './components/history-form/history-form.component';
+import { HistoryComponent } from './components/history/history.component';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -35,7 +40,12 @@ export function tokenGetter() {
     NavbarNutritionistComponent,
     HomeClientComponent,
     HomeNutritionistComponent,
-    RegisterComponent
+    RegisterComponent,
+    ExperienceFormComponent,
+    ExperienceComponent,
+    ProfileClientComponent,
+    HistoryFormComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

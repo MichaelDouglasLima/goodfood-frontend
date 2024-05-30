@@ -8,6 +8,9 @@ import { HomeNutritionistComponent } from './components/home-nutritionist/home-n
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { ProfileClientComponent } from './components/profile-client/profile-client.component';
+import { HistoryComponent } from './components/history/history.component';
 
 
 const routes: Routes = [
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'home-client', component: HomeClientComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'CLIENT' } },
   { path: 'home-nutritionist', component: HomeNutritionistComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'NUTRITIONIST' } },
   { path: 'pantry', component: PantryComponent },
+  { path: 'experience', component: ExperienceComponent },
+  { path: 'history', component: HistoryComponent },
+  { path: 'profile-client', component: ProfileClientComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
