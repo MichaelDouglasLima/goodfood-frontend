@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { ProfileClientComponent } from './components/profile-client/profile-client.component';
 import { HistoryComponent } from './components/history/history.component';
+import { ProfileNutritionistComponent } from './components/profile-nutritionist/profile-nutritionist.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'experience', component: ExperienceComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'profile-client', component: ProfileClientComponent },
+  { path: 'profile-nutritionist', component: ProfileNutritionistComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];

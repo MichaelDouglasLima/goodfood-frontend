@@ -23,6 +23,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { ProfileClientComponent } from './components/profile-client/profile-client.component';
 import { HistoryFormComponent } from './components/history-form/history-form.component';
 import { HistoryComponent } from './components/history/history.component';
+import { ProfileNutritionistComponent } from './components/profile-nutritionist/profile-nutritionist.component';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -45,7 +46,8 @@ export function tokenGetter() {
     ExperienceComponent,
     ProfileClientComponent,
     HistoryFormComponent,
-    HistoryComponent
+    HistoryComponent,
+    ProfileNutritionistComponent
   ],
   imports: [
     BrowserModule,
