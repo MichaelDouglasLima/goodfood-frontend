@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { SignupRequestDto } from '../interfaces/SignupRequestDto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class AuthService {
         }
       })
     );
+  }
+
+  register(signupRequest: SignupRequestDto): Observable<any> {
+    return this.http.post(`${this.apiUrl}/signup`, signupRequest);
   }
 
   logout(): void {

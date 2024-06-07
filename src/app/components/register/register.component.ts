@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -6,5 +8,43 @@ import { Component } from '@angular/core';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  formGroupRegister: FormGroup;
+  confirmPassword: string = '';
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+    this.formGroupRegister = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      role: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.formGroupRegister.valid) {
+      if (this.formGroupRegister.value.password !== this.confirmPassword) {
+        console.warn('As senhas não coincidem!');
+        return;
+      }
+
+      const { name, email, password, role } = this.formGroupRegister.value;
+      this.authService.register({ name, email, password, role }).subscribe({
+        next: (response) => {
+          console.log('Usuário registrado com sucesso', response);
+        },
+        error: (error) => {
+          console.error('Erro ao registrar usuário', error);
+        }
+      });
+    }
+  }
+
+  get pfgName() { return this.formGroupRegister.get("name") }
+
+  get pfgEmail() { return this.formGroupRegister.get("email") }
+
+  get pfgPassword() { return this.formGroupRegister.get("password") }
+
+  get pfgRole() { return this.formGroupRegister.get("role") }
 
 }
