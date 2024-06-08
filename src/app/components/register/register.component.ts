@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,8 +11,9 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
   formGroupRegister: FormGroup;
   confirmPassword: string = '';
+  emailInUse: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.formGroupRegister = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -31,9 +33,14 @@ export class RegisterComponent {
       this.authService.register({ name, email, password, role }).subscribe({
         next: (response) => {
           console.log('Usuário registrado com sucesso', response);
+          alert('Conta cadastrada com sucesso!');
+          this.router.navigate(['/login']);
         },
         error: (error) => {
           console.error('Erro ao registrar usuário', error);
+          if (error.status === 400 && error.error.message.includes('Email is already in use')) {
+            this.emailInUse = true;
+          }
         }
       });
     }
