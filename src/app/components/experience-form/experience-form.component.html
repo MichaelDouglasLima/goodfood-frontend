@@ -1,38 +1,38 @@
 <div class="">
     <div class="text-center display-6 mt-2">
-        Registre sua experiência semanalmente e mantenha o seu nutricionista atualizado sobre progresso
+        Registre sua experiência semanalmente e mantenha o seu nutricionista atualizado sobre a sua experiência da dieta.
     </div>
     
     <div class="row p-3 mt-5 mb-3 border border-2 rounded-2 border-success bg-success-subtle">
-        <form>
+        <form [formGroup]="formGroupExperience" ngFormExperience="ngForm">
             <div class="row mb-3 mt-3">
                 <label for="inputRating" class="col-sm-1 col-form-label">Nota:</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="inputRating" id="inputRating">
+                    <input type="number" class="form-control" name="inputRating" id="inputRating" formControlName="name">
                 </div>
 
                 <label for="inputWeight" class="col-sm-1 col-form-label">Peso:</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" name="inputWeight" id="inputWeight">
+                    <input type="number" class="form-control" name="inputWeight" id="inputWeight" formControlName="weight">
                 </div>
 
                 <label for="inputEndDate" class="col-sm-2 col-form-label">Data Final:</label>
                 <div class="col-sm-4">
-                    <input type="date" class="form-control" name="endDate" id="inputEndDate">
+                    <input type="date" class="form-control" name="endDate" id="inputEndDate" formControlName="endDate">
                 </div>
             </div>
 
             <div class="row mb-3 mt-3">
                 <label for="txtAreaComment" class="col-sm-1 col-form-label">Comentário:</label>
                 <div class="col-sm-11">
-                    <textarea class="form-control" name="comment" id="txtAreaComment" cols="30" rows="3"></textarea>
+                    <textarea class="form-control" name="comment" id="txtAreaComment" cols="30" rows="3" formControlName="description"></textarea>
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-6">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-success" type="button">Salvar</button>
+                        <button type="submit"class="btn btn-success" type="button" (click)="save()">Salvar</button>
                     </div>
                 </div>
             </div>

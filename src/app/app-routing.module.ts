@@ -12,6 +12,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { ProfileClientComponent } from './components/profile-client/profile-client.component';
 import { HistoryComponent } from './components/history/history.component';
 import { ProfileNutritionistComponent } from './components/profile-nutritionist/profile-nutritionist.component';
+import { WeeklylogsComponent } from './components/weeklylogs/weeklylogs.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'home-client', component: HomeClientComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'CLIENT' } },
   { path: 'home-nutritionist', component: HomeNutritionistComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'NUTRITIONIST' } },
   { path: 'pantry', component: PantryComponent },
-  { path: 'experience', component: ExperienceComponent },
+  { path: 'experience', component: WeeklylogsComponent },
   { path: 'history', component: HistoryComponent },
   { path: 'profile-client', component: ProfileClientComponent },
   { path: 'profile-nutritionist', component: ProfileNutritionistComponent },

@@ -25,6 +25,9 @@ import { ProfileClientComponent } from './components/profile-client/profile-clie
 import { HistoryFormComponent } from './components/history-form/history-form.component';
 import { HistoryComponent } from './components/history/history.component';
 import { ProfileNutritionistComponent } from './components/profile-nutritionist/profile-nutritionist.component';
+import { WeeklylogFormComponent } from './components/weeklylog-form/weeklylog-form.component';
+import { WeeklylogsComponent } from './components/weeklylogs/weeklylogs.component';
+import { WeeklylogCardComponent } from './components/weeklylog-card/weeklylog-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -48,7 +51,10 @@ export function tokenGetter() {
     ProfileClientComponent,
     HistoryFormComponent,
     HistoryComponent,
-    ProfileNutritionistComponent
+    ProfileNutritionistComponent,
+    WeeklylogFormComponent,
+    WeeklylogsComponent,
+    WeeklylogCardComponent
   ],
   imports: [
     BrowserModule,
