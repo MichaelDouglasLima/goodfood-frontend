@@ -28,6 +28,10 @@ import { ProfileNutritionistComponent } from './components/profile-nutritionist/
 import { WeeklylogFormComponent } from './components/weeklylog-form/weeklylog-form.component';
 import { WeeklylogsComponent } from './components/weeklylogs/weeklylogs.component';
 import { WeeklylogCardComponent } from './components/weeklylog-card/weeklylog-card.component';
+import { DietFormComponent } from './components/diet-form/diet-form.component';
+import { SuggestedMealComponent } from './components/suggested-meal/suggested-meal.component';
+import { MealCardComponent } from './components/meal-card/meal-card.component';
+import { MealTableComponent } from './components/meal-table/meal-table.component';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -54,7 +58,11 @@ export function tokenGetter() {
     ProfileNutritionistComponent,
     WeeklylogFormComponent,
     WeeklylogsComponent,
-    WeeklylogCardComponent
+    WeeklylogCardComponent,
+    DietFormComponent,
+    SuggestedMealComponent,
+    MealCardComponent,
+    MealTableComponent
   ],
   imports: [
     BrowserModule,
