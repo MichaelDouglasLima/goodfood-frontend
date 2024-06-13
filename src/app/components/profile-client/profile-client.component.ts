@@ -79,17 +79,17 @@ export class ProfileClientComponent {
     this.setFormReadonly(false);
   }
 
-  onCancel(): void {
-    this.profileClientForm.patchValue(this.initialClientData);
-    this.isEditMode = false;
-    this.setFormReadonly(true);
-  }
-
   onSave(): void {
     this.initialClientData = this.profileClientForm.value;
     this.isEditMode = false;
     this.setFormReadonly(true);
     // Adicione aqui a lógica para salvar os dados atualizados do cliente
+  }
+
+  onCancel(): void {
+    this.profileClientForm.patchValue(this.initialClientData);
+    this.isEditMode = false;
+    this.setFormReadonly(true);
   }
 
 }

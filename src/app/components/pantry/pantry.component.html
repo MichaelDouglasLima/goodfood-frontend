@@ -20,6 +20,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Calorias</th>
+                        <th scope="col" class="d-none d-md-table-cell text-end">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,10 @@
                         <td>Batata</td>
                         <td>Legume</td>
                         <td>78,50 Kcal</td>
+                        <td class="text-end">
+                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
+                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -35,6 +40,10 @@
                         <td>Batata Doce</td>
                         <td>Legume</td>
                         <td>78,50 Kcal</td>
+                        <td class="text-end">
+                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
+                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -42,6 +51,10 @@
                         <td>Frango</td>
                         <td>Carne</td>
                         <td>239 Kcal</td>
+                        <td class="text-end">
+                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
+                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -49,6 +62,10 @@
                         <td>Abacaxi</td>
                         <td>Fruta</td>
                         <td>239 Kcal</td>
+                        <td class="text-end">
+                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
+                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
 
                     <tr>
@@ -56,6 +73,10 @@
                         <td>Pepino</td>
                         <td>Legume</td>
                         <td>239 Kcal</td>
+                        <td class="text-end">
+                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
+                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
+                        </td>
                     </tr>
 
                 </tbody>
@@ -63,4 +84,18 @@
         </div>
     </div>
     <br>
+    <ng-template #confirmModal let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title">Remover Produto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close()"></button>
+          </div>
+          <div class="modal-body">
+            <!-- <p>Deseja remover o Produto #{{this.deleteProduct.id}}?</p> -->
+             <p>Deseja remover o Produto?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="modal.close(true)">Confirmar</button>
+            <button type="button" class="btn btn-primary" (click)="modal.close()">Cancelar</button>
+          </div>
+    </ng-template>
 </div>
