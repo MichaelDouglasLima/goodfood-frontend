@@ -32,6 +32,8 @@ import { DietFormComponent } from './components/diet-form/diet-form.component';
 import { SuggestedMealComponent } from './components/suggested-meal/suggested-meal.component';
 import { MealCardComponent } from './components/meal-card/meal-card.component';
 import { MealTableComponent } from './components/meal-table/meal-table.component';
+import { NutritionistsComponent } from './components/nutritionists/nutritionists.component';
+import { NutritionistCardComponent } from './components/nutritionist-card/nutritionist-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -62,7 +64,9 @@ export function tokenGetter() {
     DietFormComponent,
     SuggestedMealComponent,
     MealCardComponent,
-    MealTableComponent
+    MealTableComponent,
+    NutritionistsComponent,
+    NutritionistCardComponent
   ],
   imports: [
     BrowserModule,

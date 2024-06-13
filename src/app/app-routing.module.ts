@@ -14,6 +14,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { ProfileNutritionistComponent } from './components/profile-nutritionist/profile-nutritionist.component';
 import { WeeklylogsComponent } from './components/weeklylogs/weeklylogs.component';
 import { SuggestedMealComponent } from './components/suggested-meal/suggested-meal.component';
+import { NutritionistsComponent } from './components/nutritionists/nutritionists.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'pantry', component: PantryComponent },
   { path: 'experience', component: WeeklylogsComponent },
   { path: 'history', component: HistoryComponent },
+  { path: 'nutritionists', component: NutritionistsComponent },
   { path: 'diet-client', component: SuggestedMealComponent },
   { path: 'profile-client', component: ProfileClientComponent },
   { path: 'profile-nutritionist', component: ProfileNutritionistComponent },
