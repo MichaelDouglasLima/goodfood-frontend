@@ -34,6 +34,10 @@ import { MealCardComponent } from './components/meal-card/meal-card.component';
 import { MealTableComponent } from './components/meal-table/meal-table.component';
 import { NutritionistsComponent } from './components/nutritionists/nutritionists.component';
 import { NutritionistCardComponent } from './components/nutritionist-card/nutritionist-card.component';
+import { RequestsComponent } from './components/requests/requests.component';;
+import { RequestClientCardComponent } from './components/request-client-card/request-client-card.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { ClientCardComponent } from './components/client-card/client-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -66,7 +70,11 @@ export function tokenGetter() {
     MealCardComponent,
     MealTableComponent,
     NutritionistsComponent,
-    NutritionistCardComponent
+    NutritionistCardComponent,
+    RequestsComponent,
+    RequestClientCardComponent,
+    ClientsComponent,
+    ClientCardComponent
   ],
   imports: [
     BrowserModule,

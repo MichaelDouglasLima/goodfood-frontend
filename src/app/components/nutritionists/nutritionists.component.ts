@@ -9,6 +9,7 @@ import { Role } from '../../interfaces/enums/Role';
   styleUrl: './nutritionists.component.css'
 })
 export class NutritionistsComponent {
+  
   nutritionists: Nutritionist[] = [];
 
   constructor() {
