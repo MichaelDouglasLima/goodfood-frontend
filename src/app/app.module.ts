@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +38,7 @@ import { RequestsComponent } from './components/requests/requests.component';;
 import { RequestClientCardComponent } from './components/request-client-card/request-client-card.component';
 import { ClientsComponent } from './components/clients/clients.component';
 import { ClientCardComponent } from './components/client-card/client-card.component';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 export function tokenGetter() {
   return localStorage.getItem('authToken');
@@ -94,7 +95,12 @@ export function tokenGetter() {
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi   : true,
+    },
   ],
   bootstrap: [AppComponent]
 })

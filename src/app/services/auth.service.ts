@@ -33,9 +33,27 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey);
   }
 
+  // getToken(): string | null {
+  //   return localStorage.getItem(this.tokenKey);
+  // }
+
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    if (typeof localStorage !== 'undefined') {
+      return localStorage.getItem(this.tokenKey);
+    }
+    return null;
   }
+
+  // private isLocalStorageAvailable(): boolean {
+  //   try {
+  //     const testKey = 'test';
+  //     localStorage.setItem(testKey, 'testValue');
+  //     localStorage.removeItem(testKey);
+  //     return true;
+  //   } catch (e) {
+  //     return false;
+  //   }
+  // }
 
   isAuthenticated(): boolean {
     const token = this.getToken();
