@@ -59,12 +59,12 @@
                             <div>
                                 <div class="form-check mt-2">
                                     <input class="form-check-input col-2" type="radio" name="role" id="flexRadioClient" formControlName="role" value="CLIENT">
-                                    <label for="flexRadioClient col-10" class="form-check-label">Cliente</label>
+                                    <label for="flexRadioClient" class="form-check-label col-10">Cliente</label>
                                 </div>
         
                                 <div class="form-check mt-2">
                                     <input class="form-check-input col-2" type="radio" name="role" id="flexRadioNutritionist" formControlName="role" value="NUTRITIONIST">
-                                    <label class="form-check-label col-10" for="flexRadioNutritionist">Nutricionista</label>
+                                    <label for="flexRadioNutritionist" class="form-check-label col-10" >Nutricionista</label>
                                 </div>
         
                                 <div *ngIf="ngFormRegister.submitted && pfgRole?.errors?.['required']">

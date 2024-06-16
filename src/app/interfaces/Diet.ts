@@ -1,3 +1,5 @@
+import { NutritionistClient } from "./NutritionistClient";
+
 export interface Diet {
     id: number;
     dietType: string;
@@ -5,6 +7,5 @@ export interface Diet {
     endDate: string;
     dietStatus: number;
     totalMeals: number;
-    idClient: number;
-    idNutritionist: number;
+    nutritionistClient: NutritionistClient;
 }

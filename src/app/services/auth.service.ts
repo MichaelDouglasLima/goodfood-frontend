@@ -51,4 +51,22 @@ export class AuthService {
     return decodedToken ? decodedToken.user.role : null;
   }
 
+  getUserId(): number | null {
+    const token = this.getToken();
+    if (!token) {
+      return null;
+    }
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    return decodedToken ? decodedToken.user.id : null;
+  }
+
+  getClientId(): number | null {
+    const token = this.getToken();
+    if (!token) {
+      return null;
+    }
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    return decodedToken && decodedToken.user && decodedToken.user.client ? decodedToken.user.client.id : null;
+  }
+
 }
