@@ -1,10 +1,9 @@
 import { Category } from "./Category";
-import { User } from "./User";
 
-export interface Food {
+export interface Product {
     id: number;
     description: string;
     calories: number;
     category: Category;
-    user: User;
+    // client: Clients[];
 }

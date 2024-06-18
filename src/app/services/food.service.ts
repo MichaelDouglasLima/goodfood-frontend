@@ -18,7 +18,6 @@ export class FoodService {
   }
 
   getFoods(): Observable<Food[]> {
-    console.log('O serviço de getFoods foi chamado!')
     return this.http.get<Food[]>(this.apiUrl);
   }
 
@@ -29,5 +28,4 @@ export class FoodService {
   delete(food: Food) {
     return this.http.delete<void>(`${this.apiUrl}/${food.id}`);
   }
-
 }

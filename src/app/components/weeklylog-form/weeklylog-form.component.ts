@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { WeeklyLog } from '../../interfaces/WeeklyLog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './weeklylog-form.component.html',
   styleUrl: './weeklylog-form.component.css'
 })
-export class WeeklylogFormComponent {
+export class WeeklylogFormComponent  implements OnChanges {
 
   @Input()
   weeklyLog: WeeklyLog = {} as WeeklyLog;
@@ -24,7 +24,7 @@ export class WeeklylogFormComponent {
       weight: ['', ],
       endDate: ['', ],
       description: ['', ],
-      diet: ['', ]
+      diet: ['',]
     })
   }
 
@@ -34,5 +34,17 @@ export class WeeklylogFormComponent {
       this.saveEmitter.emit();
     }
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['weeklyLog'] && changes['weeklyLog'].currentValue) {
+      this.formGroupWeeklyLog.patchValue(this.weeklyLog);
+    }
+  }
+  
+  // ngOnChanges(): void {
+  //   if (this.weeklyLog.id) {
+  //     this.formGroupWeeklyLog.setValue(this.weeklyLog);
+  //   }
+  // }
 
 }

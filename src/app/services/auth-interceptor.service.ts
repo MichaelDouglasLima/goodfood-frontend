@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 })
 export class AuthInterceptorService implements HttpInterceptor{
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authToken = this.authService.getToken();

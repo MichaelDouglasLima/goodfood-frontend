@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { SignupRequestDto } from '../interfaces/SignupRequestDto';
+import { User } from '../interfaces/User';
 
 @Injectable({
   providedIn: 'root'
@@ -33,27 +34,12 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey);
   }
 
-  // getToken(): string | null {
-  //   return localStorage.getItem(this.tokenKey);
-  // }
-
   getToken(): string | null {
     if (typeof localStorage !== 'undefined') {
       return localStorage.getItem(this.tokenKey);
     }
     return null;
   }
-
-  // private isLocalStorageAvailable(): boolean {
-  //   try {
-  //     const testKey = 'test';
-  //     localStorage.setItem(testKey, 'testValue');
-  //     localStorage.removeItem(testKey);
-  //     return true;
-  //   } catch (e) {
-  //     return false;
-  //   }
-  // }
 
   isAuthenticated(): boolean {
     const token = this.getToken();
@@ -87,4 +73,7 @@ export class AuthService {
     return decodedToken && decodedToken.user && decodedToken.user.client ? decodedToken.user.client.id : null;
   }
 
+  getUserById(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/users/${userId}`);
+  }
 }

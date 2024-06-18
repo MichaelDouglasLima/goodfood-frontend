@@ -6,6 +6,7 @@ import { CategoryService } from '../../services/category.service';
 import { Category } from '../../interfaces/Category';
 import { AuthService } from '../../services/auth.service';
 import { Client } from '../../interfaces/Client';
+import { User } from '../../interfaces/User';
 
 @Component({
   selector: 'app-pantry',
@@ -22,6 +23,8 @@ export class PantryComponent implements OnInit {
 
   deleteFood: Food = {} as Food;
 
+  user: User = { } as User;
+
   isEditing: boolean = false;
 
   constructor(
@@ -35,11 +38,25 @@ export class PantryComponent implements OnInit {
   ngOnInit(): void {
     this.loadCategories();
     this.loadFoods();
+    this.loadUser();
+  }
+
+  loadUser(): void {
+    const userId = this.authService.getUserId();
+    if (userId) {
+      this.authService.getUserById(userId).subscribe({
+        next: user => this.user = user,
+        error: err => console.error('Failed to load user', err)
+      });
+    }
   }
 
   showToken() {
     let myToken = this.authService.getToken();
     console.log(myToken);
+    let myTokenIdUser = this.authService.getUserId();
+    console.log(myTokenIdUser);
+    alert('O seu id é: ' + myTokenIdUser);
   }
 
   saveFood(save: boolean) {

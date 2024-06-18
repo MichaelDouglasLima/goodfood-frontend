@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Food } from '../../interfaces/Food';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../../interfaces/Category';
+import { User } from '../../interfaces/User';
 
 @Component({
   selector: 'app-pantry-form',
@@ -15,6 +16,9 @@ export class PantryFormComponent {
 
   @Input()
   food: Food = {} as Food;
+
+  @Input()
+  user: User = {} as User;
 
   @Output()
   saveEmitter = new EventEmitter();
@@ -36,9 +40,21 @@ export class PantryFormComponent {
     }
   }
 
+  // save() {
+  //   if (this.formGroupFood.valid) {
+  //     Object.assign(this.food, this.formGroupFood.value);
+  //     this.saveEmitter.emit(true);
+  //   }
+  // }
+
   save() {
     if (this.formGroupFood.valid) {
-      Object.assign(this.food, this.formGroupFood.value);
+      const formValue = this.formGroupFood.getRawValue();
+      this.food = {
+        ...this.food,
+        ...formValue,
+        user: this.user
+      };
       this.saveEmitter.emit(true);
     }
   }
