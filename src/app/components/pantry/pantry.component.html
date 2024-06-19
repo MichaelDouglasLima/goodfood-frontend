@@ -5,13 +5,11 @@
         Despensa
     </header>
 
-    <app-pantry-form [food]="food" [user]="user" (saveEmitter)="saveFood($event)"></app-pantry-form>
+    <app-pantry-form [food]="food" [user]="user" [categories]="categories" (saveEmitter)="saveFood($event)"></app-pantry-form>
 
     <div class="display-6">
         Alimentos Cadastrados:
     </div>
-
-    <button class="btn btn-primary"(click)="showToken()">Meu Token</button>
     
     <div class="row">
         <div class="col-md-10 offset-md-1">
@@ -27,70 +25,16 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let food of foods">
-                        <td>{{food.id}}</td>
-                        <td>{{food.description}}</td>
-                        <td>{{food.category.description}}</td>
-                        <td>{{food.calories}}</td>
+                        <td>{{food?.id}}</td>
+                        <td>{{food?.description}}</td>
+                        <td>{{food?.category?.description}}</td>
+                        <td>{{food?.calories}}</td>
                         <td class="text-end">
                             <button class="btn p-1" (click)="edit(food)"><i class="bi bi-pencil"></i></button>
                             <button class="btn p-1" (click)="delete(confirmModal, food)"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <th scope="row">1</th>
-                        <td>Batata</td>
-                        <td>Legume</td>
-                        <td>78,50 Kcal</td>
-                        <td class="text-end">
-                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
-                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Batata Doce</td>
-                        <td>Legume</td>
-                        <td>78,50 Kcal</td>
-                        <td class="text-end">
-                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
-                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Frango</td>
-                        <td>Carne</td>
-                        <td>239 Kcal</td>
-                        <td class="text-end">
-                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
-                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Abacaxi</td>
-                        <td>Fruta</td>
-                        <td>239 Kcal</td>
-                        <td class="text-end">
-                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
-                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Pepino</td>
-                        <td>Legume</td>
-                        <td>239 Kcal</td>
-                        <td class="text-end">
-                            <button class="btn p-1"><i class="bi bi-pencil"></i></button>
-                            <button class="btn p-1"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr> -->
-
+                    
                 </tbody>
             </table>
         </div>
@@ -102,8 +46,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modal.close()"></button>
           </div>
           <div class="modal-body">
-            <!-- <p>Deseja remover o Produto #{{this.deleteProduct.id}}?</p> -->
-             <p>Deseja remover o Produto #{{this.deleteFood.description}}?</p>
+             <p>Deseja remover o Alimento # {{this.deleteFood.description}}?</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="modal.close(true)">Confirmar</button>

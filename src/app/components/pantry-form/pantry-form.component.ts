@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { Food } from '../../interfaces/Food';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Category } from '../../interfaces/Category';
@@ -11,62 +11,72 @@ import { User } from '../../interfaces/User';
 })
 export class PantryFormComponent {
 
-  @Input()
-  categories: Category[] = [];
-
-  @Input()
-  food: Food = {} as Food;
-
-  @Input()
-  user: User = {} as User;
-
-  @Output()
-  saveEmitter = new EventEmitter();
+  @Input() categories: Category[] = [];
+  @Input() food: Food = {} as Food;
+  @Input() user: User = {} as User;
+  @Output() saveEmitter = new EventEmitter<Food | false>();
 
   formGroupFood: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
     this.formGroupFood = this.formBuilder.group({
-      id: {value:null, disabled:true},
-      description: [''],
-      calories: [''],
-      category: ['']
-    })
+      id: [{ value: null, disabled: true }],
+      description: ['',],
+      calories: ['', ],
+      category: [null,],
+      user: [null] // Incluindo o usuário no FormGroup
+    });
   }
 
-  ngOnChanges(): void {
-    if (this.food.id) {
-      this.formGroupFood.setValue(this.food);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['food'] && changes['food'].currentValue) {
+      this.formGroupFood.patchValue({
+        ...this.food,
+        user: this.user // Garantindo que o usuário também é atualizado
+      });
+    } else {
+      this.resetForm();
     }
   }
 
-  // save() {
-  //   if (this.formGroupFood.valid) {
-  //     Object.assign(this.food, this.formGroupFood.value);
-  //     this.saveEmitter.emit(true);
-  //   }
-  // }
+  resetForm(): void {
+    this.formGroupFood.reset({
+      id: { value: null, disabled: true },
+      description: '',
+      calories: '',
+      category: null,
+      user: this.user // Incluindo o usuário ao resetar o formulário
+    });
+  }
 
-  save() {
+  save(): void {
     if (this.formGroupFood.valid) {
       const formValue = this.formGroupFood.getRawValue();
-      this.food = {
+      console.log('Form value before save:', formValue);
+
+      // Merge form values into the existing food object
+      const foodToSave = {
         ...this.food,
-        ...formValue,
-        user: this.user
+        ...formValue
       };
-      this.saveEmitter.emit(true);
+
+      console.log('Food to save after merge:', foodToSave);
+      this.saveEmitter.emit(foodToSave);
     }
-  }
 
-  cancel() {
+    this.cancel();
+  }
+  
+  cancel(): void {
     this.saveEmitter.emit(false);
+    this.resetForm();
   }
 
-  get ffgDescription() { return this.formGroupFood.get("description") }
+  selectedCategory(category1: Category, category2: Category) {
+    return category1 && category2 ? category1.id === category2.id : false;
+  }
 
-  get ffgCalories() { return this.formGroupFood.get("calories") }
-
-  get ffgCategory() { return this.formGroupFood.get("category") }
-
+  get ffgDescription() { return this.formGroupFood.get("description"); }
+  get ffgCalories() { return this.formGroupFood.get("calories"); }
+  get ffgCategory() { return this.formGroupFood.get("category"); }
 }
